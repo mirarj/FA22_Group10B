@@ -38,7 +38,10 @@ public class PlayerMove : MonoBehaviour
         // moveVec.x = Input.GetAxisRaw ("Horizontal");
         // moveVec.y = Input.GetAxisRaw ("Vertical");
         rb.AddForce(moveVec * moveSpeed * Time.fixedDeltaTime);
-
+        float angle = 90 + Mathf.Atan2(moveVec.y, moveVec.x)*180/Mathf.PI;
+        if(moveVec!=new Vector2(0,0)){
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0,0,angle), 10);
+        }
     }
 	
 	// void OnCollisionEnter2D(Collision2D other)
