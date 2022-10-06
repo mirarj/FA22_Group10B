@@ -8,7 +8,7 @@ public class PlayerMove : MonoBehaviour
     
 	public Rigidbody2D rb;
     public float moveSpeed = 5000f;
-	// public GameHandler gameHandlerObj;
+	public GameHandler gameHandlerObj;
 	// public GameObject hitVFX;
     private Vector2 moveVec;
 
@@ -17,9 +17,9 @@ public class PlayerMove : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D> ();
-		// if (GameObject.FindWithTag("GameController") != null){
-        //        gameHandlerObj = GameObject.FindWithTag("GameController").GetComponent<GameHandler>();
-        //   }
+		if (GameObject.FindWithTag("GameController") != null){
+               gameHandlerObj = GameObject.FindWithTag("GameController").GetComponent<GameHandler>();
+        }
     }
 
     // Update is called once per frame
@@ -44,6 +44,16 @@ public class PlayerMove : MonoBehaviour
         }
     }
 	
+    void OnCollisionEnter2D(Collision2D other)
+	{
+        if (other.gameObject.tag == "Food"){
+			
+			int value = gameObject.GetComponent<PickupSpawner>().value;
+			Destroy(other.gameObject);
+			gameHandlerObj.AddScore(value);
+        }
+    }
+
 	// void OnCollisionEnter2D(Collision2D other)
 	// {
     //     if (other.gameObject.tag == "tree"){
