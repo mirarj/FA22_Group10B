@@ -47,7 +47,6 @@ public class PlayerMove : MonoBehaviour
     void OnCollisionEnter2D(Collision2D other)
 	{
         if (other.gameObject.tag == "Food"){
-			
 			int value = gameObject.GetComponent<PickupSpawner>().value;
 			Destroy(other.gameObject);
 			gameHandlerObj.AddScore(value);
