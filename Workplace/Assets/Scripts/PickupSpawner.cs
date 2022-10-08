@@ -8,7 +8,8 @@ public class PickupSpawner : MonoBehaviour
     public Vector2[] spawnPoints;
     private int numSpawnPoints;
     private bool canSpawn;
-    private float spawnGap = 1.5f;
+    private float spawnGap = 10f;
+    public int value = 5;
 
     IEnumerator DelayPickup()
     {
