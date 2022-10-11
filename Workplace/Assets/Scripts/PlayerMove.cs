@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+
 public class PlayerMove : MonoBehaviour
 {
     
@@ -52,32 +53,27 @@ public class PlayerMove : MonoBehaviour
         }
     }
 	
-    void OnCollisionEnter2D(Collision2D other)
+    // void OnCollisionEnter2D(Collision2D other)
+	// {
+        // if (other.gameObject.tag == "food"){
+		// 	//int value = gameObject.GetComponent<PickupSpawner>().value;
+		// 	Destroy(other.gameObject);
+        // }    
+	void OnTriggerEnter2D(Collider2D other)
 	{
         if (other.gameObject.tag == "food"){
-			//int value = gameObject.GetComponent<PickupSpawner>().value;
-			Destroy(other.gameObject);
-			gameHandlerObj.AddScore(1);
+			print("add score here");
+            // gameHandlerObj.AddScore(1);
+
+			// gameObject.GetComponent<AudioSource>().Play();
+
+			// GameObject boomFX = Instantiate(hitVFX, other.gameObject.transform.position, Quaternion.identity);
+            // StartCoroutine(DestroyVFX(boomFX));
+			
+			// Destroy(other.gameObject);
+			// gameHandlerObj.AddScore(1);
         }
     }
-
-	// void OnCollisionEnter2D(Collision2D other)
-	// {
-    //     if (other.gameObject.tag == "tree"){
-
-	// void OnCollisionEnter2D(Collision2D other)
-	// {
- //        if (other.gameObject.tag == "food"){
-			
-	// 		gameObject.GetComponent<AudioSource>().Play();
-
-	//      GameObject boomFX = Instantiate(hitVFX, other.gameObject.transform.position, Quaternion.identity);
-    //         StartCoroutine(DestroyVFX(boomFX));
-			
-	   //      Destroy(other.gameObject);
-	   //      gameHandlerObj.AddScore(1);
-    //     }
-    // }
 	
 	
 	// IEnumerator DestroyVFX(GameObject theEffect){
