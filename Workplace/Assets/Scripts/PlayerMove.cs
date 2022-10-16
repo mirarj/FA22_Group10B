@@ -62,7 +62,7 @@ public class PlayerMove : MonoBehaviour
 	void OnTriggerEnter2D(Collider2D other)
 	{
         if (other.gameObject.tag == "food"){
-			print("add score here");
+			gameHandlerObj.AddScore(1);
             // gameHandlerObj.AddScore(1);
 
 			// gameObject.GetComponent<AudioSource>().Play();
