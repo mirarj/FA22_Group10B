@@ -123,37 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &50087538
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 50087539}
-  m_Layer: 0
-  m_Name: TestPoint
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &50087539
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 50087538}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 24.6, y: 11.7, z: -4.409594}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 8
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &175504449
 GameObject:
   m_ObjectHideFlags: 0
@@ -394,8 +363,8 @@ RectTransform:
   m_GameObject: {fileID: 417872716}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 732894735}
   m_Father: {fileID: 509899959}
@@ -403,7 +372,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 371, y: 225}
+  m_AnchoredPosition: {x: -575, y: 200}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &417872718
@@ -520,6 +489,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 208626954998388144, guid: 6b52af4b7732d433abd06294a14d485a, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 739351463800372613, guid: 6b52af4b7732d433abd06294a14d485a, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -1460,9 +1433,17 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8878705891755009799, guid: 0ce97705ba2f34695ac2a19f17e1b582, type: 3}
+      propertyPath: timeText
+      value: 
+      objectReference: {fileID: 1650003194}
+    - target: {fileID: 8878705891755009799, guid: 0ce97705ba2f34695ac2a19f17e1b582, type: 3}
       propertyPath: scoreText
       value: 
       objectReference: {fileID: 1528506847}
+    - target: {fileID: 8878705891755009799, guid: 0ce97705ba2f34695ac2a19f17e1b582, type: 3}
+      propertyPath: timeLimit
+      value: 60
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0ce97705ba2f34695ac2a19f17e1b582, type: 3}
 --- !u!1001 &987589457
@@ -1606,7 +1587,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6067367263389023051, guid: bfc3b032309f95140a469db042f451ec, type: 3}
       propertyPath: spawnGap
-      value: 3
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6067367263389023051, guid: bfc3b032309f95140a469db042f451ec, type: 3}
       propertyPath: children.Array.size
@@ -2322,6 +2303,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1609612763}
   m_CullTransparentMesh: 1
+--- !u!1 &1650003194 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 728989712707084957, guid: 6b52af4b7732d433abd06294a14d485a, type: 3}
+  m_PrefabInstance: {fileID: 509899958}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1686909862
 GameObject:
   m_ObjectHideFlags: 0
@@ -2917,7 +2903,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 163227648573448021, guid: dc918d853259a443697f30f58610ccfa, type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 163227648573448021, guid: dc918d853259a443697f30f58610ccfa, type: 3}
       propertyPath: m_LocalPosition.x

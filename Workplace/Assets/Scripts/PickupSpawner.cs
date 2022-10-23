@@ -25,7 +25,6 @@ public class PickupSpawner : MonoBehaviour
         numSpawnPoints = spawnPoints.Length;
         SPAvailable = new bool[numSpawnPoints];
         children = new Transform[transform.childCount];
-        print(transform.childCount);
         for (int i = 0; i < transform.childCount; i++)
         {
             children[i] = transform.GetChild(i);
