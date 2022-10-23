@@ -15,18 +15,20 @@ public class GameHandler : MonoBehaviour {
       private int gameSec;
       private static int playerScore = 0;
 
-      public string targetFood1;
-
       public GameObject [] foodIcons1;
-      public string currentItem1Name;
-      public int currentItem1Number;
+      public GameObject [] foodIcons2;
+      public GameObject [] foodIcons3;
+      public int [] currentItemNums;
 
 
 
       void Start(){
             UpdateScore();
+            ListRefresh();
       }
 
+      void Update(){
+      }
       void FixedUpdate(){
             if(gameTimer>=timeLimit){
                   SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
@@ -56,16 +58,47 @@ public class GameHandler : MonoBehaviour {
 
       }
 
-
-      public void ShoppingListItem1(){
-            //Randomize an item from the list
-            //choose a random number between 0 and array.length -1, set it to currentItem1Number.
-            //set currentItem1Name = foodIcons1[randomNum].name;
-            //HideAll
-            //for all items in the food icon array, seat each to foodIcons1[for loop #].SetActive(false);
-            //Reveal current item
-            //for current item, foodIcons1[randomNum].SetActive(true);
+      public void ListRefresh(){
+            ListItemRefresh(1,2); 
+            ListItemRefresh(2,4); 
+            ListItemRefresh(3,5); 
       }
+      public void ListItemRefresh(int itemnum, int foodnum=8){
+
+      currentItemNums[itemnum-1] = foodnum;
+
+      if(currentItemNums[0]==8 && currentItemNums[1]==8 && currentItemNums[2]==8){
+            //extra big vfx
+            ListRefresh();
+      }
+
+      
+      if (itemnum==1){
+            foreach (var icon in foodIcons1)
+                  {icon.SetActive(false);}
+            foodIcons1[currentItemNums[itemnum-1]].SetActive(true);
+      }
+      else if (itemnum==2){
+            foreach (var icon in foodIcons2)
+                  {icon.SetActive(false);}
+            foodIcons2[currentItemNums[itemnum-1]].SetActive(true);
+      }
+      else if (itemnum==3){
+            foreach (var icon in foodIcons3)
+                  {icon.SetActive(false);}
+            foodIcons3[currentItemNums[itemnum-1]].SetActive(true);
+      }
+      else {
+            print("Only 3 items in list");
+      }
+
+      }
+
+      
+      public string getItemName(int itemnum){
+            return foodIcons1[currentItemNums[itemnum-1]].name;
+      }
+
 
 
       public void UpdateTime(){
