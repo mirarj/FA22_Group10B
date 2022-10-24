@@ -43,7 +43,6 @@ public class PlayerMove : MonoBehaviour
 	{
         // moveVec.x = Input.GetAxisRaw ("Horizontal");
         // moveVec.y = Input.GetAxisRaw ("Vertical");
-        print(moveVec);
         rb.AddForce(moveVec * moveSpeed * Time.fixedDeltaTime);
         float angle = 90 + Mathf.Atan2(moveVec.y, moveVec.x)*180/Mathf.PI;
         if(moveVec!=new Vector2(0,0)){

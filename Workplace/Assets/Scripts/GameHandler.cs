@@ -51,7 +51,16 @@ public class GameHandler : MonoBehaviour {
             Text scoreTextB = scoreText.GetComponent<Text>();
             if (SceneManager.GetActiveScene().name=="GameOver")
             {
-                  scoreTextB.text = "FINAL SCORE: " + playerScore;
+                  string grade="X";
+                  if (playerScore<10) {grade="F";}
+                  else if (playerScore<25) {grade="D";}
+                  else if (playerScore<40) {grade="C";}
+                  else if (playerScore<60) {grade="B";}
+                  else if (playerScore<100) {grade="A";}
+                  else if (playerScore<100) {grade="D";}
+                  else {grade="S+";}
+                  
+                  scoreTextB.text = "FINAL SCORE: " + grade + "  (" + playerScore + ")";
             }
             else {
                   scoreTextB.text = "" + playerScore;
