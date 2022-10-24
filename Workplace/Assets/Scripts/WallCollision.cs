@@ -36,6 +36,12 @@ public class WallCollision : MonoBehaviour
 			// Destroy(other.gameObject);
 			// gameHandlerObj.AddScore(1);
         }
+        else if (other.gameObject.tag == "enemy"){
+            sr.sprite = collisionSprite;
+            sr.color = new Color(1,0.9f,0.9f,0.75f);
+            StartCoroutine(BigBump());
+            StopCoroutine(BigBump());
+        }
     }
 
     void ChangeSprite()
@@ -47,5 +53,13 @@ public class WallCollision : MonoBehaviour
         yield return new WaitForSeconds(0.3f);
         sr.sprite = defaultSprite;
     }
+
+    IEnumerator BigBump(){
+        yield return new WaitForSeconds(1f);
+        sr.sprite = defaultSprite;
+        sr.color = new Color(1,1,1,1);
+        }
+
+
 
 }

@@ -32,6 +32,7 @@ public class GameHandler : MonoBehaviour {
       void FixedUpdate(){
             if(gameTimer>=timeLimit){
                   SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+                  gameMin=0; gameSec=0;
             }
             else{
                   gameTimer += 0.02f;
@@ -59,9 +60,9 @@ public class GameHandler : MonoBehaviour {
       }
 
       public void ListRefresh(){
-            ListItemRefresh(1,2); 
-            ListItemRefresh(2,4); 
-            ListItemRefresh(3,5); 
+            ListItemRefresh(1,Random.Range(0,7)); 
+            ListItemRefresh(2,Random.Range(0,7)); 
+            ListItemRefresh(3,Random.Range(0,7)); 
       }
       public void ListItemRefresh(int itemnum, int foodnum=8){
 
@@ -69,6 +70,7 @@ public class GameHandler : MonoBehaviour {
 
       if(currentItemNums[0]==8 && currentItemNums[1]==8 && currentItemNums[2]==8){
             //extra big vfx
+            AddScore(8);
             ListRefresh();
       }
 

@@ -9,10 +9,12 @@ public class PlayerMove : MonoBehaviour
     
 	public Rigidbody2D rb;
     public float moveSpeed = 5000f;
+    private float rotateDeg = 10;
 	public GameHandler gameHandlerObj;
 	// public GameObject hitVFX;
     private Vector2 moveVec;
     public GameObject recipeItem1;
+
 
 	  
 	// Start is called before the first frame update
@@ -23,12 +25,6 @@ public class PlayerMove : MonoBehaviour
 		if (GameObject.FindWithTag("GameController") != null){
                gameHandlerObj = GameObject.FindWithTag("GameController").GetComponent<GameHandler>();
         }
-		// if (GameObject.FindWithTag("GameController") != null){
-        //        gameHandlerObj = GameObject.FindWithTag("GameController").GetComponent<GameHandler>();
-        //   }
-        if (GameObject.FindWithTag("GameHandler") != null){ 
-               gameHandlerObj = GameObject.FindWithTag("GameHandler").GetComponent<GameHandler>();
-          }
     }
 
 
@@ -47,10 +43,11 @@ public class PlayerMove : MonoBehaviour
 	{
         // moveVec.x = Input.GetAxisRaw ("Horizontal");
         // moveVec.y = Input.GetAxisRaw ("Vertical");
+        print(moveVec);
         rb.AddForce(moveVec * moveSpeed * Time.fixedDeltaTime);
         float angle = 90 + Mathf.Atan2(moveVec.y, moveVec.x)*180/Mathf.PI;
         if(moveVec!=new Vector2(0,0)){
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0,0,angle), 10);
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0,0,angle), rotateDeg);
         }
     }
 	
@@ -61,21 +58,21 @@ public class PlayerMove : MonoBehaviour
             {
             print(gameHandlerObj.getItemName(1));
                 gameHandlerObj.ListItemRefresh(1);
-                gameHandlerObj.AddScore(5);
+                gameHandlerObj.AddScore(3);
                 // big vfx
             }
             else if (other.name==gameHandlerObj.getItemName(2))
             {
             print(gameHandlerObj.getItemName(2));
                 gameHandlerObj.ListItemRefresh(2);
-                gameHandlerObj.AddScore(5);
+                gameHandlerObj.AddScore(3);
                 // big vfx
             }
             else if (other.name==gameHandlerObj.getItemName(3))
             {
             print(gameHandlerObj.getItemName(3));
                 gameHandlerObj.ListItemRefresh(3);
-                gameHandlerObj.AddScore(5);
+                gameHandlerObj.AddScore(3);
                 // big vfx
             }
             else {
@@ -85,12 +82,27 @@ public class PlayerMove : MonoBehaviour
 			// gameObject.GetComponent<AudioSource>().Play();
 
 			// GameObject boomFX = Instantiate(hitVFX, other.gameObject.transform.position, Quaternion.identity);
-            // StartCoroutine(DestroyVFX(boomFX));
-			
+            // StartCoroutine(DestroyVFX(boomFX));			
         }
     }
-	
-	
+
+    void OnCollisionEnter2D(Collision2D other){
+        if (other.gameObject.tag == "enemy"){
+            transform.rotation = transform.localRotation;
+            gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
+            rotateDeg = 0;
+            StartCoroutine(Freeze());
+            StopCoroutine(Freeze());
+        }
+    }
+
+    IEnumerator Freeze(){ 
+        yield return new WaitForSeconds(1f);
+        rb.constraints = RigidbodyConstraints2D.None;
+        rotateDeg = 10;
+    }
+
+
 	// IEnumerator DestroyVFX(GameObject theEffect){
     //       yield return new WaitForSeconds(0.5f);
     //       Destroy(theEffect);
